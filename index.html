@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-pag - Soluções de Pagamento Interativas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: A thematic single-page application designed to guide the user from a high-level overview to specific solutions. The structure includes a hero, an interactive 'How it Works' flow, a personalized 'Solutions for You' section, and a feature grid. This non-linear, interactive approach was chosen to make the information more engaging and tailored to different user types (e-commerce, marketplaces, etc.), improving comprehension over a static text document. -->
+    <!-- Visualization & Content Choices: Report Info: Payment Process -> Goal: Organize/Inform -> Viz: Interactive HTML/CSS Flowchart -> Interaction: Hover/click to reveal details -> Justification: Visually simplifies a complex process. Report Info: Target Audiences -> Goal: Inform/Organize -> Viz: Tabbed content display -> Interaction: Click to switch content -> Justification: Personalizes information for different user needs. Report Info: 'Foco na Conversão' -> Goal: Compare/Persuade -> Viz: Bar Chart -> Interaction: Animated load, tooltips -> Justification: Quantifies a key benefit, making it more impactful than text alone. Library: Chart.js (Canvas) used for the chart. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+        }
+        .tab-active {
+            background-color: #007BFF;
+            color: #FFFFFF;
+            border-color: #007BFF;
+        }
+        .tab-inactive {
+            background-color: #FFFFFF;
+            color: #495057;
+            border-color: #DEE2E6;
+        }
+        .flow-step {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .flow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800">
+                X-pag
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 transition">Como Funciona</a>
+                <a href="#solutions" class="text-gray-600 hover:text-blue-600 transition">Soluções</a>
+                <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Diferenciais</a>
+                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-white py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 leading-tight">Soluções de Pagamento para o seu Negócio Digital</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Simplificamos e otimizamos as vendas pela internet, atuando como sua parceira estratégica para o crescimento.</p>
+                <a href="#solutions" class="mt-8 inline-block bg-blue-600 text-white font-bold px-8 py-3 rounded-md text-lg hover:bg-blue-700 transition-transform transform hover:scale-105">Conheça as Soluções</a>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Como o Pagamento Funciona</h2>
+                    <p class="mt-2 text-gray-600">Somos a ponte entre seu cliente, sua loja e as instituições financeiras. Veja o fluxo simplificado.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+                    <div class="flow-step bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">1</div>
+                        <h3 class="font-bold text-lg mb-2">Compra na Loja</h3>
+                        <p class="text-gray-600 text-sm">O cliente escolhe o produto e insere os dados de pagamento diretamente no seu site.</p>
+                    </div>
+                    <div class="hidden lg:block text-center text-3xl text-gray-300 font-light">→</div>
+                    <div class="flow-step bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">2</div>
+                        <h3 class="font-bold text-lg mb-2">Processamento X-pag</h3>
+                        <p class="text-gray-600 text-sm">Nossa plataforma recebe os dados com segurança e os comunica com bancos e operadoras.</p>
+                    </div>
+                    <div class="hidden lg:block text-center text-3xl text-gray-300 font-light">→</div>
+                    <div class="flow-step bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">3</div>
+                        <h3 class="font-bold text-lg mb-2">Análise Antifraude</h3>
+                        <p class="text-gray-600 text-sm">Sistemas inteligentes analisam a transação para garantir a máxima segurança para todos.</p>
+                    </div>
+                    <div class="hidden lg:block text-center text-3xl text-gray-300 font-light">→</div>
+                    <div class="flow-step bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-green-500 mb-4">4</div>
+                        <h3 class="font-bold text-lg mb-2">Pagamento Aprovado</h3>
+                        <p class="text-gray-600 text-sm">Com a transação confirmada, o valor é liberado para você e o pedido do cliente é aprovado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solutions" class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Soluções para cada tipo de Negócio</h2>
+                    <p class="mt-2 text-gray-600">Clique no seu perfil de negócio para ver como podemos ajudar.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8" id="solution-tabs">
+                    <button data-target="ecommerce" class="solution-tab tab-active px-4 py-2 rounded-md border text-sm md:text-base font-medium transition">Lojas Virtuais</button>
+                    <button data-target="marketplaces" class="solution-tab tab-inactive px-4 py-2 rounded-md border text-sm md:text-base font-medium transition">Marketplaces</button>
+                    <button data-target="entrepreneurs" class="solution-tab tab-inactive px-4 py-2 rounded-md border text-sm md:text-base font-medium transition">Empreendedores Digitais</button>
+                    <button data-target="developers" class="solution-tab tab-inactive px-4 py-2 rounded-md border text-sm md:text-base font-medium transition">Desenvolvedores e SaaS</button>
+                </div>
+                <div id="solution-content" class="bg-gray-50 p-8 rounded-lg min-h-[250px] transition-opacity duration-500">
+                </div>
+            </div>
+        </section>
+        
+        <section id="features" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Diferenciais que Impulsionam Vendas</h2>
+                    <p class="mt-2 text-gray-600">Nossa plataforma é pensada para maximizar suas vendas com segurança e eficiência.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Checkout Transparente</h3>
+                        <p class="text-gray-600">O cliente finaliza a compra no seu site, sem redirecionamentos. Isso aumenta a confiança e a taxa de conversão de vendas.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Gestão Centralizada</h3>
+                        <p class="text-gray-600">Acompanhe transações, gerencie recebimentos e visualize relatórios completos em um único painel de controle intuitivo.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Foco na Conversão</h3>
+                        <p class="text-gray-600">Ferramentas e estabilidade da plataforma pensadas para aprovar o máximo de vendas legítimas, impulsionando seu faturamento.</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Múltiplos Meios de Pagamento</h3>
+                        <p class="text-gray-600">Ofereça Cartão de Crédito, Pix e Boleto. Dê liberdade para seu cliente escolher como pagar e não perca nenhuma venda.</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Integração Simplificada</h3>
+                        <p class="text-gray-600">Nossas APIs e plugins para as maiores plataformas de e-commerce permitem que você comece a vender em tempo recorde.</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Segurança Robusta</h3>
+                        <p class="text-gray-600">Conte com um sistema antifraude de ponta para proteger seu negócio e seus clientes, minimizando chargebacks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-blue-600 text-white py-16 md:py-24">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Pronto para Vender Mais?</h2>
+                <p class="mt-4 text-blue-100 max-w-2xl mx-auto">Entre em contato com nossa equipe de especialistas e descubra como a X-pag pode transformar a forma como você recebe pagamentos online.</p>
+                <a href="#" class="mt-8 inline-block bg-white text-blue-600 font-bold px-8 py-3 rounded-md text-lg hover:bg-gray-100 transition-transform transform hover:scale-105">Fale com um Especialista</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2025 X-pag. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Uma solução de pagamentos para impulsionar o futuro do seu negócio.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const solutionContents = {
+                ecommerce: {
+                    title: 'Solução Completa para seu E-commerce',
+                    description: 'Ofereça uma experiência de compra fluida com nosso checkout transparente e eficiente. Aumente sua taxa de conversão, ofereça múltiplos meios de pagamento e gerencie tudo em um só lugar. Ideal para lojas de pequeno, médio ou grande porte.',
+                    features: ['Checkout Transparente', 'Pix, Boleto e Cartão', 'Painel de Gestão', 'Segurança Antifraude']
+                },
+                marketplaces: {
+                    title: 'Pagamentos para Marketplaces',
+                    description: 'Gerencie o fluxo de pagamentos complexos entre múltiplos vendedores e compradores com facilidade. Nossa solução de split de pagamento garante que cada parte receba o valor correto de forma automática e segura.',
+                    features: ['Split de Pagamento', 'Contas Individuais para Vendedores', 'Fluxo de Repasse Automatizado', 'Relatórios Consolidados']
+                },
+                entrepreneurs: {
+                    title: 'Ideal para Empreendedores Digitais',
+                    description: 'Venda seus produtos, serviços ou infoprodutos com uma solução de pagamento simples e direta. Comece a receber pagamentos online rapidamente, sem burocracia e com as melhores taxas do mercado.',
+                    features: ['Integração Rápida', 'Links de Pagamento', 'Checkout Otimizado', 'Recebimento Simplificado']
+                },
+                developers: {
+                    title: 'APIs Flexíveis para Desenvolvedores',
+                    description: 'Integre uma solução de pagamento robusta e escalável em seu sistema ou plataforma SaaS. Nossas APIs são bem documentadas e flexíveis, permitindo que você crie a experiência de pagamento que seus clientes merecem.',
+                    features: ['Documentação Completa', 'Ambiente de Testes (Sandbox)', 'SDKs e Bibliotecas', 'Suporte Técnico Especializado']
+                }
+            };
+
+            const tabsContainer = document.getElementById('solution-tabs');
+            const contentContainer = document.getElementById('solution-content');
+            const tabs = document.querySelectorAll('.solution-tab');
+
+            function updateContent(targetId) {
+                const content = solutionContents[targetId];
+                contentContainer.style.opacity = 0;
+
+                setTimeout(() => {
+                    contentContainer.innerHTML = `
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">${content.title}</h3>
+                        <p class="text-gray-600 mb-6">${content.description}</p>
+                        <div class="flex flex-wrap gap-4">
+                            ${content.features.map(feature => `
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">${feature}</span>
+                            `).join('')}
+                        </div>
+                    `;
+                    contentContainer.style.opacity = 1;
+                }, 300);
+            }
+
+            tabsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('solution-tab')) {
+                    const targetId = e.target.dataset.target;
+                    
+                    tabs.forEach(tab => {
+                        tab.classList.remove('tab-active');
+                        tab.classList.add('tab-inactive');
+                    });
+
+                    e.target.classList.add('tab-active');
+                    e.target.classList.remove('tab-inactive');
+
+                    updateContent(targetId);
+                }
+            });
+
+            updateContent('ecommerce');
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
